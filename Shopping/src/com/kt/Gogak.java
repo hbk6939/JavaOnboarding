@@ -5,7 +5,7 @@ import com.kt.entity.Product;
 import com.kt.entity.Refrigerator;
 import com.kt.entity.TV;
 
-public class Gogak {
+public class Gogak implements IGogak {
 	private int money;
 	private Product[] basket = new Product[5];
 	private int count;
@@ -18,6 +18,10 @@ public class Gogak {
 
 	public int getMoney() {
 		return money;
+	}
+
+	public Product[] getBasket() {
+		return basket;
 	}
 
 	// 1) 상품추가
@@ -37,7 +41,7 @@ public class Gogak {
 
 		basket[count++] = product;
 		money -= product.getPrice();
-	
+
 		System.out.println(product.getName() + "가격 : " + product.getPrice());
 		System.out.println("잔액 : " + money);
 		System.out.println();
@@ -59,7 +63,7 @@ public class Gogak {
 			}
 			totalPrice += basket[i].getPrice();
 		}
-		
+
 		System.out.println("\n[구매내역 및 잔액]");
 		if (comCnt > 0)
 			System.out.printf("Computer : %d개\n", comCnt);
@@ -67,11 +71,22 @@ public class Gogak {
 			System.out.printf("TV : %d개\n", tvCnt);
 		if (refCnt > 0)
 			System.out.printf("Refrigerator : %d개\n", refCnt);
-		
+
 		System.out.printf("사용금액 : %d\n", totalPrice);
 		System.out.printf("잔액 : %d\n\n", money);
 	}
 
 	// 3) 구매내역
+	@Override
+	public void saleProductList(Product[] product) {
+		System.out.print("상품목록 : ");
+		int idx = 0;
+		for (Product p : product) {
+			idx++;
+			System.out.printf("%d.%s ", idx, p.getName());
+		}
+
+		System.out.printf("\n잔액 : %d\n\n", money);
+	}
 
 }

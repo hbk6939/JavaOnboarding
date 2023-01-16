@@ -1,22 +1,25 @@
 package com.kr;
 
 import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.Iterator;
 
 import com.kr.emp.Employee;
 import com.kr.emp.IBusinessTrip;
-import com.kr.emp.Permanent;
 
 public class Company {
-	Employee[] emps = new Employee[10];
-	int count = 0;
+	HashMap<Integer, Employee> emps = new HashMap<>();
+	
+//	Employee[] emps = new Employee[10];
+//	int count = 0;
 
-	public void regEmployee(Employee employee) {
-		emps[count++] = employee;
+	public void regEmployee(Employee emp) {
+		emps.put(emp.getId() , emp);
 	}
 
 	public void printAllEmployee() {
-		for (int i = 0; i < count; i++) {
-			System.out.println(emps[i].toString());
+		for (Integer id : emps.keySet()) {
+			System.out.println(emps.get(id));
 		}
 	}
 
@@ -24,9 +27,11 @@ public class Company {
 		DecimalFormat decFormat = new DecimalFormat("###,###");
 
 		int totalPay = 0;
-		for (int i = 0; i < count; i++) {
-			totalPay += emps[i].getPay();
+		Iterator<Integer> keys = emps.keySet().iterator();
+		while (keys.hasNext()) {
+		    totalPay += keys.next();
 		}
+
 		return decFormat.format(totalPay);
 	}
 

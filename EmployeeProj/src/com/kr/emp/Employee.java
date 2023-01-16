@@ -18,4 +18,8 @@ public abstract class Employee {
 	public String toString() {
 		return "사번 : " + id + ", 이름 : " + name;
 	}
+
+	public Integer getId() {
+		return id;
+	}
 }

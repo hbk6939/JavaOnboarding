@@ -1,3 +1,4 @@
+package collections;
 import java.util.HashMap;
 
 public class MapTest1 {

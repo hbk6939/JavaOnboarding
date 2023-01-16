@@ -1,4 +1,4 @@
-
+package collections;
 public class Stucent extends Person {
 	int num;
 	String major;

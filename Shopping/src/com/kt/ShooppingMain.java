@@ -3,6 +3,7 @@ package com.kt;
 import java.util.Scanner;
 
 import com.kt.entity.Computer;
+import com.kt.entity.Product;
 import com.kt.entity.Refrigerator;
 import com.kt.entity.TV;
 
@@ -11,6 +12,8 @@ public class ShooppingMain {
 
 	public static void main(String[] args) {
 		Gogak gg = new Gogak(10000);
+		Product[] pd = new Product[]{new Computer(), new TV(),
+				new Refrigerator()};
 
 		while (true) {
 			menu();
@@ -19,25 +22,25 @@ public class ShooppingMain {
 				break;
 
 			switch (sel) {
-			case 1:
+				case 1 :
+					gg.saleProductList(pd);
+					break;
+				case 2 :
+					gg.addProduct(new Computer());
+					break;
+				case 3 :
+					gg.addProduct(new TV());
+					break;
+				case 4 :
+					gg.addProduct(new Refrigerator());
+					break;
+				case 5 :
+					gg.printBasket();
+					break;
 
-				break;
-			case 2:
-				gg.addProduct(new Computer());
-				break;
-			case 3:
-				gg.addProduct(new TV());
-				break;
-			case 4:
-				gg.addProduct(new Refrigerator());
-				break;
-			case 5:
-				gg.printBasket();
-				break;
-
-			default:
-				gg.getMoney();
-				break;
+				default :
+					gg.getMoney();
+					break;
 			}
 		}
 	}
