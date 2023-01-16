@@ -1,26 +1,49 @@
 package a.OOP;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import b.acc.Account;
 import b.acc.SpecialAccount;
 
 public class Bank {
-	Account[] accs = new Account[100];
-	int count = 0;
+	ArrayList<Account> accs = new ArrayList<>();
+//	Account[] accs = new Account[100];
+//	int count = 0;
 
 	void makeAccount(Account acc) {
-		accs[count++] = acc;
+		accs.add(acc);
 	}
 
 	void printAllAccount() {
-		for (int i = 0; i < count; i++) {
-			System.out.println(accs[i].info());
+		for (Account acc : accs) {
+			System.out.println(acc.info());
 		}
 	}
 
+	void printSpecialAccount() {
+		Iterator<Account> it = accs.iterator();
+		while (it.hasNext()) {
+			Account acc = it.next();
+			if (acc instanceof SpecialAccount) {
+				System.out.println(acc.info());
+			}
+		}
+
+		// for문으로 사용하면
+		for (Iterator<Account> iterator = accs.iterator(); iterator.hasNext();) {
+			Account account = iterator.next();
+			if (account instanceof SpecialAccount) {
+				System.out.println("for문 - " + account.info());
+			}
+		}
+		
+	}
+
 	void printSpecialAccount(String grade) {
-		for (int i = 0; i < count; i++) {
-			if (accs[i] instanceof SpecialAccount) {
-				SpecialAccount sacc = (SpecialAccount) accs[i];
+		for (Account acc : accs) {
+			if (acc instanceof SpecialAccount) {
+				SpecialAccount sacc = (SpecialAccount) acc;
 				if (sacc.getGrade().equals(grade)) {
 					System.out.println(sacc.info());
 				}
@@ -28,20 +51,13 @@ public class Bank {
 		}
 	}
 
-	void printSpecialAccount() {
-		for (int i = 0; i < count; i++) {
-			if (accs[i] instanceof SpecialAccount) {
-				System.out.println(accs[i].info());
-			}
-		}
-	}
-
 	void printAccount() {
-		for (int i = 0; i < count; i++) {
-			if (!(accs[i] instanceof SpecialAccount)) {
-				System.out.println(accs[i].info());
+		Iterator<Account> it = accs.iterator();
+		while (it.hasNext()) {
+			Account acc = it.next();
+			if (!(acc instanceof SpecialAccount)) {
+				System.out.println(acc.info());
 			}
 		}
 	}
-
 }

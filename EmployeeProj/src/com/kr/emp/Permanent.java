@@ -1,8 +1,6 @@
-package com.kr;
+package com.kr.emp;
 
 import java.text.DecimalFormat;
-
-import com.kr.emp.Employee;
 
 public class Permanent extends Employee {
 	private int pay;
@@ -13,7 +11,7 @@ public class Permanent extends Employee {
 		super(id, name);
 		this.pay = pay;
 	}
-	
+
 	public int getPay() {
 		return pay;
 	}
@@ -22,7 +20,5 @@ public class Permanent extends Employee {
 	public String toString() {
 		return super.toString() + ", 급여 : " + decFormat.format(pay) + "원";
 	}
-
-
 
 }

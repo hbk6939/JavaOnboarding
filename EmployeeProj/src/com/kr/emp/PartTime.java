@@ -1,10 +1,8 @@
-package com.kr;
+package com.kr.emp;
 
 import java.text.DecimalFormat;
 
-import com.kr.emp.Employee;
-
-public class PartTime extends Employee {
+public class PartTime extends Employee implements IBusinessTrip {
 	private int time;
 	private int payPertime;
 
@@ -13,7 +11,7 @@ public class PartTime extends Employee {
 		this.time = time;
 		this.payPertime = payPertime;
 	}
-	
+
 	public int getPay() {
 		return payPertime * time;
 	}
@@ -22,6 +20,11 @@ public class PartTime extends Employee {
 	public String toString() {
 		DecimalFormat decFormat = new DecimalFormat("###,###");
 		return super.toString() + ", 급여 : " + decFormat.format(payPertime * time) + "원";
+	}
+
+	@Override
+	public void goBusinessTrip(int day) {
+		System.out.println(day + "일");
 	}
 
 }
