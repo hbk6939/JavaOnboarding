@@ -7,6 +7,7 @@ import com.kr.emp.Sales;
 public class EmployeeMain {
 
 	public static void main(String[] args) {
+
 		Company com = new Company();
 
 		Permanent emp1 = new Permanent(101, "홍길동", 100000);
