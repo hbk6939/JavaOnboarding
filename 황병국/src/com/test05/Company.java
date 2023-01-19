@@ -23,15 +23,15 @@ public class Company {
 
 		// 모든 객체의 인센티브 100씩 지급한다.
 		for (Integer key : emps.keySet()) {
-			System.out.println( ((Bonus) emps).get(key).);
+			Bonus b =  (Bonus) emps.get(key);
+			b.incentive(100);
 		}
 		System.out.println("\n인센티브100지급\n");
-		
 
 		// 모든 객체의 정보와 세금을 출력한다. ( for문 이용 )
 		System.out.println("  name       department     salary    tax\n------------------------------------------");
 		for (Integer key : emps.keySet()) {
-			System.out.println(emps.get(key) + "   " + emps.get(key).tax());
+			System.out.println(emps.get(key) + "   " + String.format("%.2f", emps.get(key).tax()) );
 		}
 	}
 
